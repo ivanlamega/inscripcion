@@ -17,7 +17,7 @@ and open the template in the editor.
         
         <center>
             <div class='my-notification' ><strong class='uppercase' id='alertHeader'>I.S.P. Las Toscas</strong><a href='#' class='close-my-notification'>x</a><p>Inscripción a mesas de examen</p></div>
-            <form class="form-container">
+            <form class="form-container" method='post' action="inscripcion.php">
                 <div class="field-title-a"><strong>Tecnicatura Superior en Infomática Aplicada</strong></div>
                 <div class="form-title"><strong>Carrera</strong></div>
                 <select class="form-field" name='carrera' required>

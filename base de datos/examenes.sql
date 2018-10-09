@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2018 a las 20:24:43
+-- Tiempo de generación: 09-10-2018 a las 23:13:51
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -51,7 +51,7 @@ INSERT INTO `alumno` (`idAlumno`, `NombreApellido`, `DNI`, `Curso`) VALUES
 CREATE TABLE `asignaturas` (
   `idAsignatura` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `año` int(11) NOT NULL,
+  `grado` int(11) NOT NULL,
   `idCarrera` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -59,7 +59,7 @@ CREATE TABLE `asignaturas` (
 -- Volcado de datos para la tabla `asignaturas`
 --
 
-INSERT INTO `asignaturas` (`idAsignatura`, `nombre`, `año`, `idCarrera`) VALUES
+INSERT INTO `asignaturas` (`idAsignatura`, `nombre`, `grado`, `idCarrera`) VALUES
 (1, 'Lógica', 1, 1),
 (2, 'Diseño y gestión de las bases de datos', 2, 1),
 (3, 'Informática aplicada', 3, 1),
@@ -81,7 +81,7 @@ CREATE TABLE `carreras` (
 --
 
 INSERT INTO `carreras` (`idCarrera`, `nombre`) VALUES
-(1, 'Técnicatura en Informática Aplicada'),
+(1, 'Técnicatura Superior en Informática Aplicada'),
 (2, 'Profesorado de Lengua y Literatura'),
 (3, 'Profesorado de Nivel Primario');
 
@@ -108,14 +108,14 @@ CREATE TABLE `inscripcion` (
 
 CREATE TABLE `turnos` (
   `idTurno` int(10) UNSIGNED NOT NULL,
-  `nombreMeses` varchar(50) NOT NULL
+  `turno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `turnos`
 --
 
-INSERT INTO `turnos` (`idTurno`, `nombreMeses`) VALUES
+INSERT INTO `turnos` (`idTurno`, `turno`) VALUES
 (1, 'Noviembre-Diciembre'),
 (2, 'Febrero-Marzo');
 

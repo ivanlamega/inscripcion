@@ -47,4 +47,53 @@ function ObtenerCarreras()
         return false;
     }
 }
+
+function ObtenerCarrera($idCarrera)
+{
+    $consultaSQL = "SELECT * FROM carreras WHERE idCarrera = $idCarrera";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+function ObtenerAsignaturas($idCarrera)
+{
+    $consultaSQL = "SELECT * FROM asignaturas WHERE idCarrera = $idCarrera";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+function ObtenerTurnos()
+{
+    
+    $consultaSQL = "SELECT * FROM turnos";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
+}
 ?>
