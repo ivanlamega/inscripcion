@@ -96,4 +96,39 @@ function ObtenerTurnos()
         return false;
     }
 }
+
+
+function InscribirAlumno($idAlumno, $idAsignatura, $llamado1, $llamado2, $idTurno, $fecha)
+{
+    
+    $consultaSQL = "INSERT INTO inscripcion (idAlumno, idAsignatura, llamado1, llamado2, idTurno, fecha) VALUES ('$idAlumno', '$idAsignatura', '$llamado1', '$llamado2', '$idTurno', '$fecha');";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+function InsertarAlumno($nombre, $dni, $idTurno)
+{
+    $conexion = conectar();
+    
+    if($conexion->query("INSERT INTO alumno (NombreApellido, DNI, Curso) VALUES ('$nombre', '$dni', '$idTurno')") === TRUE)
+    {
+        $UlcId = $conexion->insert_id;
+        return $UlcId;
+    }
+    else
+    {
+        echo "Error: " . $consultaSQL . "<br>" . $conexion->error;
+    }
+    
+    $conexion->close();
+}
 ?>

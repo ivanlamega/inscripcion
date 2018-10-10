@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2018 a las 23:13:51
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Tiempo de generación: 10-10-2018 a las 04:29:25
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -40,7 +38,9 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`idAlumno`, `NombreApellido`, `DNI`, `Curso`) VALUES
-(1, 'Maidana Acevedo Marcelo Ivan', '38818194', 4);
+(1, 'Maidana Acevedo Marcelo Ivan', '38818194', 4),
+(9, 'Gabriel', '23879429', 2),
+(10, 'Hola', '38838293', 2);
 
 -- --------------------------------------------------------
 
@@ -97,8 +97,18 @@ CREATE TABLE `inscripcion` (
   `idAsignatura` int(10) NOT NULL,
   `llamado1` tinyint(1) NOT NULL,
   `llamado2` tinyint(1) NOT NULL,
-  `idTurno` int(10) UNSIGNED NOT NULL
+  `idTurno` int(10) UNSIGNED NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`idInscripcion`, `idAlumno`, `idAsignatura`, `llamado1`, `llamado2`, `idTurno`, `fecha`) VALUES
+(6, 10, 1, 1, 0, 2, '2018-10-17'),
+(7, 10, 2, 0, 1, 2, '2018-10-17'),
+(8, 10, 3, 1, 1, 2, '2018-10-17');
 
 -- --------------------------------------------------------
 
@@ -161,7 +171,7 @@ ALTER TABLE `turnos`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idAlumno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
@@ -176,13 +186,12 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idInscripcion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `idTurno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
-
+  MODIFY `idTurno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

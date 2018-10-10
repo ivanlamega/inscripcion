@@ -17,6 +17,22 @@ and open the template in the editor.
             {
                 $idCarrera = $_POST["carrera"];
             }
+            
+            $turno = 0;
+            $nombApel = 0;
+            $dni = 0;
+            $curso = 0;
+            $fecha = 0;
+            
+            if(isset($_POST["turno"]) && isset($_POST["nomApe"]) && isset($_POST["dni"]) && isset($_POST["curso"]) && isset($_POST["fecha"]))
+            {
+                $turno = $_POST["turno"];
+                $nombApel = $_POST["nomApe"];
+                $dni = $_POST["dni"];
+                $curso = $_POST["curso"];
+                $fecha = $_POST["fecha"];
+            }
+            
         ?>
     </head>
     <body>
@@ -31,14 +47,36 @@ and open the template in the editor.
             </form>
         </center>
         <?php
-            print "hola".$idCarrera;
+            
+            $idAlumno = InsertarAlumno($nombApel, $dni, $turno);
+            print $idAlumno;
+        
             $asignaturas = ObtenerAsignaturas($idCarrera);
             while($row=$asignaturas->fetch_object())
             {
-                print $row->idAsignatura;
-                print "hola";
+                $primerLlamado = 0;
+                $segundoLlamado = 0;
+                
+                if(isset($_POST["llamado1".$row->idAsignatura]))
+                {
+                    //print "$row->nombre: primer llamado<br>";
+                    $primerLlamado = $_POST["llamado1".$row->idAsignatura];
+                }
+                
+                if(isset($_POST["llamado2".$row->idAsignatura]))
+                {
+                    //print "$row->nombre: segundo llamado<br>";
+                    $segundoLlamado = $_POST["llamado2".$row->idAsignatura];
+                }
+                
+                print $primerLlamado . " " .$segundoLlamado;
+                if($primerLlamado == 0 && $segundoLlamado == 0)
+                {
+                    continue;
+                }
+                
+                InscribirAlumno($idAlumno, $row->idAsignatura, $primerLlamado, $segundoLlamado, $turno, $fecha);
             }
-            print "hola";
         ?>
     </body>
 </html>

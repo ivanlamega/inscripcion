@@ -23,7 +23,7 @@ and open the template in the editor.
     <body>
         <center>
             <div class='my-notification' ><strong class='uppercase' id='alertHeader'>I.S.P. Las Toscas</strong><a href='#' class='close-my-notification'>x</a><p>Inscripción a mesas de examen</p></div>
-            <form class="form-container" method='get' action="confirmar.php">
+            <form class="form-container" method='post' action="confirmar.php">
                 <?php
                     $carrera = ObtenerCarrera($idCarrera)->fetch_object();
                     $turnos = ObtenerTurnos();
