@@ -115,11 +115,11 @@ function InscribirAlumno($idAlumno, $idAsignatura, $llamado1, $llamado2, $idTurn
     }
 }
 
-function InsertarAlumno($nombre, $dni, $curso, $fecha)
+function InsertarAlumno($nombre, $dni, $curso, $fecha, $idCarrera)
 {
     $conexion = conectar();
     
-    if($conexion->query("INSERT INTO alumno (NombreApellido, DNI, Curso, fecha) VALUES ('$nombre', '$dni', '$curso', '$fecha')") === TRUE)
+    if($conexion->query("INSERT INTO alumno (NombreApellido, DNI, Curso, fecha, idCarrera) VALUES ('$nombre', '$dni', '$curso', '$fecha', '$idCarrera')") === TRUE)
     {
         $UlcId = $conexion->insert_id;
         return $UlcId;

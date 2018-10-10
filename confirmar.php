@@ -48,7 +48,7 @@ and open the template in the editor.
         </center>
         <?php
             
-            $idAlumno = InsertarAlumno($nombApel, $dni, $curso, $fecha);
+            $idAlumno = InsertarAlumno($nombApel, $dni, $curso, $fecha, $idCarrera);
         
             $asignaturas = ObtenerAsignaturas($idCarrera);
             while($row=$asignaturas->fetch_object())

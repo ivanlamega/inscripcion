@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2018 a las 20:06:56
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Tiempo de generación: 11-10-2018 a las 01:06:26
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -52,19 +50,21 @@ CREATE TABLE `alumno` (
   `NombreApellido` varchar(50) NOT NULL,
   `DNI` varchar(8) NOT NULL,
   `Curso` int(2) UNSIGNED NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `idCarrera` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `alumno`
 --
 
-INSERT INTO `alumno` (`idAlumno`, `NombreApellido`, `DNI`, `Curso`, `fecha`) VALUES
-(11, 'Marcelo Ivan Maidana Acevedo', '38818194', 4, '2018-10-10'),
-(16, 'Juanito Perez', '48743547', 4, '2018-10-10'),
-(17, 'Test', '38818194', 3, '2018-10-09'),
-(18, 'test', 'M', 4, '2018-10-22'),
-(19, 'test2', '3454', 2, '2018-09-10');
+INSERT INTO `alumno` (`idAlumno`, `NombreApellido`, `DNI`, `Curso`, `fecha`, `idCarrera`) VALUES
+(11, 'Marcelo Ivan Maidana Acevedo', '38818194', 4, '2018-10-10', 1),
+(16, 'Juanito Perez', '48743547', 4, '2018-10-10', 1),
+(17, 'Test', '38818194', 3, '2018-10-09', 1),
+(18, 'test', 'M', 4, '2018-10-22', 1),
+(19, 'test2', '3454', 2, '2018-09-10', 1),
+(20, 'Anacleto', '23123234', 4, '2018-10-10', 1);
 
 -- --------------------------------------------------------
 
@@ -171,7 +171,11 @@ INSERT INTO `inscripcion` (`idInscripcion`, `idAlumno`, `idAsignatura`, `llamado
 (31, 18, 5, 1, 0, 2),
 (32, 18, 7, 0, 1, 2),
 (33, 19, 2, 1, 1, 2),
-(34, 19, 18, 0, 1, 2);
+(34, 19, 18, 0, 1, 2),
+(35, 20, 1, 0, 1, 1),
+(36, 20, 5, 0, 1, 1),
+(37, 20, 6, 1, 0, 1),
+(38, 20, 7, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -190,7 +194,8 @@ CREATE TABLE `turnos` (
 
 INSERT INTO `turnos` (`idTurno`, `turno`) VALUES
 (1, 'Noviembre-Diciembre'),
-(2, 'Febrero-Marzo');
+(2, 'Febrero-Marzo'),
+(3, 'Julio-Agosto');
 
 --
 -- Índices para tablas volcadas
@@ -245,7 +250,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idAlumno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
@@ -260,13 +265,12 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `idInscripcion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `idTurno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
-
+  MODIFY `idTurno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

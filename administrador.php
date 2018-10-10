@@ -59,8 +59,8 @@ and open the template in the editor.
                 <select class="form-field" name='alumno' required>
                     <option value='' selected disabled hidden>Elija el alumno</option>
                     <?php
-                        $listaCarreras = ObtenerAlumnos();
-                        while($row=$listaCarreras->fetch_object())
+                        $listaAlumnos = ObtenerAlumnos();
+                        while($row=$listaAlumnos->fetch_object())
                         {
                             print "<option value='$row->idAlumno'>$row->NombreApellido</option>";
                         }
@@ -76,10 +76,14 @@ and open the template in the editor.
             if($idAlumno > 0)
             {
                 $alumno = ObtenerAlumno($idAlumno)->fetch_object();
+                $carrera = ObtenerCarrera($alumno->idCarrera)->fetch_object();
+                
                 print "<h3>Alumno: $alumno->NombreApellido</h3>";
                 print "<h3>Dni: $alumno->DNI</h3>";
+                print "<h3>Carrera: $carrera->nombre</h3>";
                 print "<h3>Curso: $alumno->Curso to</h3>";
                 print "<h3>Fecha: $alumno->fecha</h3>";
+                
                 
                 print "<table border='1'>";
                 print "<tr>";
@@ -89,6 +93,7 @@ and open the template in the editor.
                 print "<th>2º Llamado</th>";
                 print "</tr>";
                 $inscripcion = InfomacionInscripcion($idAlumno);
+                $cantAsignaturas = 0;
                 while($row=$inscripcion->fetch_object())
                 {
                     print "<tr>";
@@ -112,8 +117,12 @@ and open the template in the editor.
                         print "<td>No</td>";
                     }
                     print "</tr>";
+                    
+                    $cantAsignaturas++;
                 }
                 print "</table>";
+                
+                print "<h3>Total inscriptas: $cantAsignaturas</h3>";
             }
         ?>
     </body>
