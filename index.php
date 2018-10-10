@@ -32,7 +32,7 @@ and open the template in the editor.
                 </select>
                 <div class="submit-container">
                 <input class="submit-button" type="submit" value="Ingresar" />
-                <center><div class="field-title-a"><a href="">Iniciar como Admin</a></div></center>
+                <center><div class="field-title-a"><a href="iniciar_sesion.php">Iniciar como Admin</a></div></center>
                 </div>
             </form>
         </center>

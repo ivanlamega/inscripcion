@@ -48,8 +48,7 @@ and open the template in the editor.
         </center>
         <?php
             
-            $idAlumno = InsertarAlumno($nombApel, $dni, $turno);
-            print $idAlumno;
+            $idAlumno = InsertarAlumno($nombApel, $dni, $curso, $fecha);
         
             $asignaturas = ObtenerAsignaturas($idCarrera);
             while($row=$asignaturas->fetch_object())
@@ -69,13 +68,12 @@ and open the template in the editor.
                     $segundoLlamado = $_POST["llamado2".$row->idAsignatura];
                 }
                 
-                print $primerLlamado . " " .$segundoLlamado;
                 if($primerLlamado == 0 && $segundoLlamado == 0)
                 {
                     continue;
                 }
                 
-                InscribirAlumno($idAlumno, $row->idAsignatura, $primerLlamado, $segundoLlamado, $turno, $fecha);
+                InscribirAlumno($idAlumno, $row->idAsignatura, $primerLlamado, $segundoLlamado, $turno);
             }
         ?>
     </body>

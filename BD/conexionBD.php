@@ -66,7 +66,7 @@ function ObtenerCarrera($idCarrera)
 
 function ObtenerAsignaturas($idCarrera)
 {
-    $consultaSQL = "SELECT * FROM asignaturas WHERE idCarrera = $idCarrera";
+    $consultaSQL = "SELECT * FROM asignaturas WHERE idCarrera = $idCarrera  ORDER BY grado";
     
     $resultado=  EjecutarConsulta($consultaSQL);
     if (isset($resultado))
@@ -98,10 +98,10 @@ function ObtenerTurnos()
 }
 
 
-function InscribirAlumno($idAlumno, $idAsignatura, $llamado1, $llamado2, $idTurno, $fecha)
+function InscribirAlumno($idAlumno, $idAsignatura, $llamado1, $llamado2, $idTurno)
 {
     
-    $consultaSQL = "INSERT INTO inscripcion (idAlumno, idAsignatura, llamado1, llamado2, idTurno, fecha) VALUES ('$idAlumno', '$idAsignatura', '$llamado1', '$llamado2', '$idTurno', '$fecha');";
+    $consultaSQL = "INSERT INTO inscripcion (idAlumno, idAsignatura, llamado1, llamado2, idTurno) VALUES ('$idAlumno', '$idAsignatura', '$llamado1', '$llamado2', '$idTurno');";
     
     $resultado=  EjecutarConsulta($consultaSQL);
     if (isset($resultado))
@@ -115,11 +115,11 @@ function InscribirAlumno($idAlumno, $idAsignatura, $llamado1, $llamado2, $idTurn
     }
 }
 
-function InsertarAlumno($nombre, $dni, $idTurno)
+function InsertarAlumno($nombre, $dni, $curso, $fecha)
 {
     $conexion = conectar();
     
-    if($conexion->query("INSERT INTO alumno (NombreApellido, DNI, Curso) VALUES ('$nombre', '$dni', '$idTurno')") === TRUE)
+    if($conexion->query("INSERT INTO alumno (NombreApellido, DNI, Curso, fecha) VALUES ('$nombre', '$dni', '$curso', '$fecha')") === TRUE)
     {
         $UlcId = $conexion->insert_id;
         return $UlcId;
@@ -130,5 +130,78 @@ function InsertarAlumno($nombre, $dni, $idTurno)
     }
     
     $conexion->close();
+}
+
+function BuscarAdmin($usuario)
+{
+    
+    $consultaSQL="SELECT * FROM administrador WHERE usuario = '$usuario'";
+    $resultado = EjecutarConsulta($consultaSQL);
+
+    if (isset($resultado))
+    {
+        //VERIFICO SI ENCONTRO DATOS
+        $fila = $resultado->fetch_object();
+        if (isset($fila->contra))
+        {
+            return $fila->contra;    
+        }
+        else 
+        {     return false;
+        
+        }
+    }
+}
+
+function ObtenerAlumnos()
+{
+    
+    $consultaSQL = "SELECT * FROM alumno";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+
+function ObtenerAlumno($idAlumno)
+{
+    
+    $consultaSQL = "SELECT * FROM alumno WHERE idAlumno = $idAlumno";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+function InfomacionInscripcion($idAlumno)
+{
+    
+    $consultaSQL = "SELECT inscripcion.*, asignaturas.grado, asignaturas.nombre FROM inscripcion JOIN asignaturas ON asignaturas.idAsignatura = inscripcion.idAsignatura WHERE idAlumno = $idAlumno";
+    
+    $resultado=  EjecutarConsulta($consultaSQL);
+    if (isset($resultado))
+    {
+
+        return $resultado;    
+    }
+    else 
+    {
+        return false;
+    }
 }
 ?>
