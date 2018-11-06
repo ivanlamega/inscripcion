@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Carreras</title>
         <link rel="stylesheet" href="estilos/inscripcion.css">
         <?php
             include("BD/conexionBD.php");
@@ -21,7 +21,7 @@ and open the template in the editor.
                 <div class="field-title-a"><strong>Tecnicatura Superior en Infomática Aplicada</strong></div>
                 <div class="form-title"><strong>Carrera</strong></div>
                 <select class="form-field" name='carrera' required>
-                    <option value='' selected disabled hidden>Elija la carrera</option>
+                    <option value='' selected disabled hidden>Elija una carrera</option>
                     <?php
                         $listaCarreras = ObtenerCarreras();
                         while($row=$listaCarreras->fetch_object())

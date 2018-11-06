@@ -43,7 +43,7 @@ and open the template in the editor.
                 <input class="form-field" type="text" name="nomApe" required/><br />
                 <div class="field-title-b"><strong>DNI</strong></div>
                 <input class="form-field" type="text" name="dni" required/><br />
-                <div class="field-title-b"><strong>Curso</strong></div>
+                <div class="field-title-b"><strong>Año</strong></div>
                 <input class="form-field" type="number" name="curso" required/><br />
                 <div class="field-title-b"><strong>Fecha</strong></div>
                 <input class="form-field" type="date" name="fecha" required/><br />

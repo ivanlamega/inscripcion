@@ -73,6 +73,7 @@ and open the template in the editor.
             </form>
         </center>
         <?php
+        
             if($idAlumno > 0)
             {
                 $alumno = ObtenerAlumno($idAlumno)->fetch_object();
@@ -81,7 +82,7 @@ and open the template in the editor.
                 print "<h3>Alumno: $alumno->NombreApellido</h3>";
                 print "<h3>Dni: $alumno->DNI</h3>";
                 print "<h3>Carrera: $carrera->nombre</h3>";
-                print "<h3>Curso: $alumno->Curso to</h3>";
+                print "<h3>Año: $alumno->Curso º</h3>";
                 print "<h3>Fecha: $alumno->fecha</h3>";
                 
                 

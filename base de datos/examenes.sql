@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2018 a las 01:06:26
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.23
+-- Tiempo de generación: 06-11-2018 a las 17:58:40
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -59,12 +61,8 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`idAlumno`, `NombreApellido`, `DNI`, `Curso`, `fecha`, `idCarrera`) VALUES
-(11, 'Marcelo Ivan Maidana Acevedo', '38818194', 4, '2018-10-10', 1),
-(16, 'Juanito Perez', '48743547', 4, '2018-10-10', 1),
-(17, 'Test', '38818194', 3, '2018-10-09', 1),
-(18, 'test', 'M', 4, '2018-10-22', 1),
-(19, 'test2', '3454', 2, '2018-09-10', 1),
-(20, 'Anacleto', '23123234', 4, '2018-10-10', 1);
+(20, 'Marcelo Ivan Maidana Acevedo', '38818194', 4, '2018-11-06', 1),
+(21, 'Fulanita', '64546846', 1, '2018-11-06', 1);
 
 -- --------------------------------------------------------
 
@@ -146,36 +144,19 @@ CREATE TABLE `inscripcion` (
 --
 
 INSERT INTO `inscripcion` (`idInscripcion`, `idAlumno`, `idAsignatura`, `llamado1`, `llamado2`, `idTurno`) VALUES
-(9, 11, 14, 1, 1, 1),
-(10, 11, 13, 1, 0, 1),
-(11, 11, 4, 1, 1, 1),
-(12, 11, 21, 1, 1, 1),
-(13, 16, 1, 0, 1, 2),
-(14, 16, 5, 1, 0, 2),
-(15, 16, 6, 0, 1, 2),
-(16, 16, 7, 1, 0, 2),
-(17, 16, 14, 0, 1, 2),
-(18, 16, 13, 1, 0, 2),
-(19, 16, 12, 0, 1, 2),
-(20, 16, 10, 1, 0, 2),
-(21, 16, 8, 1, 1, 2),
-(22, 16, 2, 0, 1, 2),
-(23, 16, 17, 1, 0, 2),
-(24, 16, 3, 0, 1, 2),
-(25, 16, 4, 1, 1, 2),
-(26, 16, 20, 0, 1, 2),
-(27, 16, 21, 0, 1, 2),
-(28, 17, 5, 0, 1, 2),
-(29, 17, 7, 1, 0, 2),
-(30, 17, 13, 0, 1, 2),
-(31, 18, 5, 1, 0, 2),
-(32, 18, 7, 0, 1, 2),
-(33, 19, 2, 1, 1, 2),
-(34, 19, 18, 0, 1, 2),
-(35, 20, 1, 0, 1, 1),
-(36, 20, 5, 0, 1, 1),
-(37, 20, 6, 1, 0, 1),
-(38, 20, 7, 1, 0, 1);
+(38, 0, 4, 1, 1, 1),
+(39, 0, 20, 1, 0, 1),
+(40, 0, 21, 0, 1, 1),
+(41, 0, 4, 1, 1, 1),
+(42, 0, 20, 1, 0, 1),
+(43, 0, 21, 0, 1, 1),
+(44, 20, 4, 1, 1, 1),
+(45, 20, 20, 1, 0, 1),
+(46, 20, 21, 0, 1, 1),
+(47, 21, 1, 1, 0, 1),
+(48, 21, 5, 1, 0, 1),
+(49, 21, 6, 0, 1, 1),
+(50, 21, 7, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -194,8 +175,7 @@ CREATE TABLE `turnos` (
 
 INSERT INTO `turnos` (`idTurno`, `turno`) VALUES
 (1, 'Noviembre-Diciembre'),
-(2, 'Febrero-Marzo'),
-(3, 'Julio-Agosto');
+(2, 'Febrero-Marzo');
 
 --
 -- Índices para tablas volcadas
@@ -250,7 +230,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idAlumno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
@@ -265,12 +245,13 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `idInscripcion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `idTurno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTurno` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
